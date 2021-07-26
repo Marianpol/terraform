@@ -47,14 +47,15 @@ resource "aws_security_group" "allow_http" {
 
 resource "aws_s3_bucket" "ci-bucket" {
   bucket = var.aws_bucket_name
-  acl = "private"
+  acl    = "private"
+  force_destroy = true
 
   versioning {
     enabled = true
   }
 
   tags = {
-    Name = "my-bucket"
+    Name         = "my-bucket"
     Envirionment = "private"
   }
 }
